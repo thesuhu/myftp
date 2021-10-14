@@ -1,6 +1,6 @@
 const streamifier = require('streamifier')
 const ftp = require('basic-ftp')
-const {logConsole,errorConsole} = require('@thesuhu/colorconsole')
+const { logConsole, errorConsole } = require('@thesuhu/colorconsole')
 
 const ftpconfig = {
     host: process.env.FTP_HOST || 'localhost',
@@ -10,24 +10,26 @@ const ftpconfig = {
     secure: process.env.FTP_SECURE || false
 }
 
-exports.uploadstream = async (reqFiles, remotepath) => {
+exports.uploadstream = async (buffer, remotepath) => {
     var client = new ftp.Client()
     client.ftp.verbose = false
     try {
         await client.access(ftpconfig)
-        await client.uploadFrom(streamifier.createReadStream(reqFiles.data), remotepath)
+        await client.uploadFrom(streamifier.createReadStream(buffer), remotepath)
         client.close()
         logConsole('Upload successful')
+        return { message: 'Upload successful' }
     } catch (err) {
         client.close()
         errorConsole(err.message)
+        return { message: err.message }
     }
 }
 
-exports.uploadfile = async(localFile, remoteFile) => {
+exports.uploadfile = async (localFile, remoteFile) => {
     // to do ...
 }
 
-exports.downloadfile = async(localFile, remoteFile) => {
+exports.downloadfile = async (localFile, remoteFile) => {
     // to do ...
 }
