@@ -1,2 +1,3 @@
-// local file upload
-// to do
+var { uploadstream, uploadfile, downloadfile } = require('../myftp')
+
+console.log('Hello world!')
