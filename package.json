@@ -1,0 +1,29 @@
+{
+  "name": "myftp",
+  "version": "1.0.0",
+  "description": "Work with FTP easily",
+  "main": "myftp.js",
+  "scripts": {
+    "test": "node ./test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thesuhu/myftp.git"
+  },
+  "keywords": [
+    "ftp",
+    "basic-ftp",
+    "streamfile"
+  ],
+  "author": "thesuhu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thesuhu/myftp/issues"
+  },
+  "homepage": "https://github.com/thesuhu/myftp#readme",
+  "dependencies": {
+    "@thesuhu/colorconsole": "^1.0.5",
+    "basic-ftp": "^4.6.6",
+    "streamifier": "^0.1.1"
+  }
+}
