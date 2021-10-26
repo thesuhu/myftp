@@ -51,7 +51,10 @@ router.post('/upload', async (req, res) => {
 Below is an example download file from FTP server to local directory.
 
 ```js
-\\ TO DO
+var localFile = './temp/test.txt'
+var remoteFile = '/test.txt'
+var retval = downloadfile(localFile, remoteFile) 
+console.log(retval.message) // retval.message will be "Download successful" if no error
 ```
 
 Below is an example of getting a list of directories on the FTP server.

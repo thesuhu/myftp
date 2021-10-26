@@ -31,5 +31,17 @@ exports.uploadfile = async (localFile, remoteFile) => {
 }
 
 exports.downloadfile = async (localFile, remoteFile) => {
-    // to do ...
+    var client = new ftp.Client()
+    client.ftp.verbose = false
+    try {
+        await client.access(ftpconfig)
+        await client.downloadTo(localFile, remoteFile)
+        client.close()
+        logConsole('Download successful')
+        return { message: 'Download successful' }
+    } catch (err) {
+        client.close()
+        errorConsole(err.message)
+        return { message: err.message }
+    }
 }
