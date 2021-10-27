@@ -1,8 +1,8 @@
 # myftp
 
-[![npm](https://img.shields.io/npm/v/myftp.svg?style=flat-square)](https://www.npmjs.com/package/@thesuhu/colorconsole)
+[![npm](https://img.shields.io/npm/v/myftp.svg?style=flat-square)](https://www.npmjs.com/package/@thesuhu/myftp)
 [![Build Status](https://img.shields.io/travis/thesuhu/myftp.svg?branch=main&style=flat-square)](https://app.travis-ci.com/thesuhu/myftp)
-[![license](https://img.shields.io/github/license/thesuhu/myftp?style=flat-square)](https://github.com/thesuhu/colorconsole/blob/master/LICENSE)
+[![license](https://img.shields.io/github/license/thesuhu/myftp?style=flat-square)](https://github.com/thesuhu/myftp/blob/master/LICENSE)
 
 Work with FTP easily.
 
