@@ -39,10 +39,10 @@ router.post('/upload', async (req, res) => {
     // FILENAME is key from form-data, replace with yours
     var buffer = req.files.FILENAME.data 
     var filename = req.files.FILENAME.name 
-    var remotepath = '/test/' + filename
+    var remoteFile = '/test/' + filename
 
     // upload to FTP
-    var retval = await uploadstream(buffer, remotepath)
+    var retval = await uploadstream(buffer, remoteFile)
     console.log(retval)
     res.send(retval.message) // retval.message will be "Upload successful" if no error
 })
