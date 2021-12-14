@@ -47,6 +47,39 @@ router.post('/upload', async (req, res) => {
     res.send(retval.message) // retval.message will be "Upload successful" if no error
 })
 ```
+Below is an example multiple file upload using method `POST` and headers `Content-Type: multipart/form-data`. In this example using `express` framework, so requires package `express-fileupload` and add this line in `app.js/index.js`.
+
+```js
+const fileupload = require('express-fileupload')
+app.use(fileupload())
+```
+
+then the following module will work fine. 
+
+```js
+const { multiuploadstream } = require('myftp')
+
+router.post('/upload', async (req, res) => {
+    var files = Object.values(req.files)        
+    var arrBuffer = []
+    var arrRemoteFile = []
+
+    files.forEach((element) => {
+        arrBuffer.push(element.data)
+        arrRemoteFile.push('/test/' + element.name)
+    })
+
+    // upload to FTP
+    var retval = await multiuploadstream(arrBuffer, arrRemoteFile)
+    console.log(retval)
+    res.send(retval) // retval is an array
+
+    // [
+    //     { index: 0, message: 'Upload successful' },
+    //     { index: 1, message: 'Upload successful' }
+    // ]   
+})
+```
 
 Below is an example download file from FTP server to local directory.
 

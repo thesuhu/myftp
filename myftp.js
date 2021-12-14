@@ -47,3 +47,23 @@ exports.downloadfile = async (localFile, remoteFile) => {
         return { message: err.message }
     }
 }
+
+exports.multiuploadstream = async (arrBuffer, arrRemotefile) => {
+    var client = new ftp.Client()
+    client.ftp.verbose = false
+    await client.access(ftpconfig)
+    var statusupload = []
+    for (let i = 0; i < arrBuffer.length; i++) {
+        try {
+            await client.ensureDir(path.parse(arrRemotefile[i]).dir)
+            await client.uploadFrom(streamifier.createReadStream(arrBuffer[i]), arrRemotefile[i])
+            logConsole('Index: ' + i + ', upload successful')
+            statusupload.push({ index: i, message: 'Upload successful' })
+        } catch (err) {
+            errorConsole('Index: ' + i + ', ' + err.message)
+            statusupload.push({ index: i, message: 'err.message' })
+        }
+    }
+    client.close()
+    return statusupload
+}
