@@ -10,7 +10,7 @@ const ftpconfig = {
     password: process.env.FTP_PWD || '',
     secure: process.env.FTP_SECURE || false
 }
-console.log(ftpconfig)
+
 exports.uploadstream = async (buffer, remoteFile) => {
     var client = new ftp.Client()
     client.ftp.verbose = false

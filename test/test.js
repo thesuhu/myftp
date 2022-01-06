@@ -4,12 +4,12 @@ console.log('Hello world!')
 
 // upload stream, see README.md
 
-// download file
+// // download file
 // var localFile = './temp/test.txt'
 // var remoteFile = '/test.txt'
 // var retval = downloadfile(localFile, remoteFile) 
 
-// upload file
+// // upload file
 // var localFile = './temp/test.txt'
 // var remoteFile = '/test_copy.txt'
 // var retval = uploadfile(localFile, remoteFile)
