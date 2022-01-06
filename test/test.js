@@ -10,4 +10,6 @@ console.log('Hello world!')
 // var retval = downloadfile(localFile, remoteFile) 
 
 // upload file
-// to do ...
+// var localFile = './temp/test.txt'
+// var remoteFile = '/test_copy.txt'
+// var retval = uploadfile(localFile, remoteFile)

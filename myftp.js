@@ -10,7 +10,7 @@ const ftpconfig = {
     password: process.env.FTP_PWD || '',
     secure: process.env.FTP_SECURE || false
 }
-
+console.log(ftpconfig)
 exports.uploadstream = async (buffer, remoteFile) => {
     var client = new ftp.Client()
     client.ftp.verbose = false
@@ -29,7 +29,19 @@ exports.uploadstream = async (buffer, remoteFile) => {
 }
 
 exports.uploadfile = async (localFile, remoteFile) => {
-    // to do ...
+    var client = new ftp.Client()
+    client.ftp.verbose = false
+    try {
+        await client.access(ftpconfig)
+        await client.uploadFrom(localFile, remoteFile)
+        client.close()
+        logConsole('Upload successful')
+        return { message: 'Upload successful' }
+    } catch (err) {
+        client.close()
+        errorConsole(err.message)
+        return { message: err.message }
+    }    
 }
 
 exports.downloadfile = async (localFile, remoteFile) => {
